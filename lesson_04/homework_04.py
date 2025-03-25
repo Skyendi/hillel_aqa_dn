@@ -54,7 +54,7 @@ word_finder = adwentures_of_tom_sawer.find("Tom", 1, -1)
 print(word_finder)
 
 # task 07
-adwentures_of_tom_sawer_sentences = adwentures_of_tom_sawer.split(".")
+adwentures_of_tom_sawer_sentences = adwentures_of_tom_sawer.split(". ")
 print(adwentures_of_tom_sawer_sentences)
 
 # task 08
