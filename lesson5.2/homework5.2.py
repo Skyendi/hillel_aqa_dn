@@ -27,11 +27,12 @@ people_records.insert(0, ('Dmytro', 'Nedilko', 37, 'Mechanic', 'Ennis'))
 people_records[1], people_records[5] = people_records[5], people_records[1]
 print(people_records)
 
-people_with_index = [6, 10, 13]
+indexes = [6, 10, 13]
 
-try:
-    for person in people_with_index:
-        if all(people_records[person][2] >= 30):
-            print("All people in modified list with records indexes 6, 10, 13 are 30 years old or older")
-except:
-    print("Some people in modified list less than 30 years old")
+ages = [people_records[index][2] for index in indexes]
+
+age_condition = all(age >= 30 for age in ages)
+if age_condition:
+    print(f"All people with indexes {indexes} are 30 years old or older ")
+else:
+    print("Some people in list less than 30 years old")
