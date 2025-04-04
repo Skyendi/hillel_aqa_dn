@@ -40,7 +40,7 @@ print(sum_calc(3, "7"))
 """
 
 
-def average_value(nums):
+def average_value(nums:list[int]):
     nums = [arg for arg in nums if isinstance(arg, (int, float))]
 
     average = sum(nums) / len(nums)
@@ -100,7 +100,7 @@ numbers = [68, 1, 18, 79, 29, 76, 89, 87, 81, 1, 5, 9, 24, 4, 19, 75, 20, 32, 22
 
 def evens_sum(*list_of_numbers):
     even_sum = 0
-    for num in numbers:
+    for num in list_of_numbers:
         if num % 2 == 0:
             even_sum += num
     return even_sum
@@ -222,8 +222,8 @@ search_criteria = (2017, 1.6, 36000)
 
 def car_filter_by_criteria(*criteria, **data):
     filtered_cars = [
-        (name, info) for name, info in car_data.items()
-        if info[1] >= search_criteria[0] and info[2] >= search_criteria[1] and info[4] <= search_criteria[2]
+        (name, info) for name, info in data.items()
+        if info[1] >= criteria[0] and info[2] >= criteria[1] and info[4] <= criteria[2]
     ]
 
     filtered_cars.sort(key=lambda car: car[1][4])
@@ -231,4 +231,4 @@ def car_filter_by_criteria(*criteria, **data):
     print(filtered_cars)
 
 
-car_filter_by_criteria()
+car_filter_by_criteria(*search_criteria, **car_data)
