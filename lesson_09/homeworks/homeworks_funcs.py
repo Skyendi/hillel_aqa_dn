@@ -18,14 +18,14 @@ def sum_calc(a, b):
     return sum_result
 
 
-def check_email(email: str):
+def check_email(email):
     if "@" not in email or "." not in email:
         return False
     else:
         return True
 
 
-def check_age(age):
+def check_age(age:int):
     if age < 18:
         return "You are not allowed!"
     elif age >= 18:
