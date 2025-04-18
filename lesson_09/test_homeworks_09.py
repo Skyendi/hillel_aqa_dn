@@ -1,9 +1,9 @@
 import unittest
-# import pytest
+import pytest
 from homeworks.homeworks_funcs import sum_calc, average_value, evens_sum, check_email, check_age
 
 
-class SumCalcTest(unittest.TestCase):
+class Test_SumCalcTest(unittest.TestCase):
 
     def test_calc_positive(self):
         self.assertEqual(sum_calc(8, 3), 11, msg="actual sum is not equal expected sum")
