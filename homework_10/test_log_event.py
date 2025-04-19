@@ -1,5 +1,5 @@
 import pytest
-from log_event import log_event, logs_reeder
+from homework_10.log_event import log_event, logs_reeder
 
 
 class TestLogsPositive:

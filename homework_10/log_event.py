@@ -1,5 +1,5 @@
 import logging
-import my_logger
+from homework_10.my_logger import logger
 
 """
 Ваша команда та ви розробляєте систему входу для веб-додатка,
