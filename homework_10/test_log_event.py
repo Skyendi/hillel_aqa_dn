@@ -9,34 +9,37 @@ class TestLogsPositive:
     def test_status_success_positive(self):
         username = "Dima"
         status = "success"
+        level = "INFO"
         log_event(username, status)
         last_line = logs_reeder()
 
         assert status in last_line, f"status {status} is not in last_line"
+        assert level in last_line, f"level {level} is not in last_line"
+        assert username in last_line, f"username {username} is not in last_line"
+
 
     def test_status_expired_positive(self):
         username = "Dima"
         status = "expired"
+        level = "WARNING"
         log_event(username, status)
         last_line = logs_reeder()
 
         assert status in last_line, f"status {status} is not in last_line"
+        assert level in last_line, f"level {level} is not in last_line"
+        assert username in last_line, f"username {username} is not in last_line"
 
     def test_status_failed_positive(self):
         username = "Dima"
         status = "failed"
+        level = "ERROR"
         log_event(username, status)
         last_line = logs_reeder()
 
         assert status in last_line, f"status {status} is not in last_line"
-
-    def test_username_positive(self):
-        username = "Dima"
-        status = "failed"
-        log_event(username, status)
-        last_line = logs_reeder()
-
+        assert level in last_line, f"level {level} is not in last_line"
         assert username in last_line, f"username {username} is not in last_line"
+
 
 
 class TestLogsNegative:
@@ -46,38 +49,48 @@ class TestLogsNegative:
     def test_status_success_negative(self):
         username = "Dima"
         status = "success"
+        level = "INFO"
         log_event(username, status)
         last_line = logs_reeder()
 
-        status = "expired"
+        status = "failed"
+        level = "WARNING"
+        username = "Lena"
 
         assert status not in last_line, f"status {status} is in last_line"
+        assert level not in last_line, f"level {level} is in last_line"
+        assert username not in last_line, f"username {username} is in last_line"
 
     def test_status_expired_negative(self):
         username = "Dima"
         status = "expired"
+        level = "WARNING"
         log_event(username, status)
         last_line = logs_reeder()
 
         status = "success"
+        level = "ERROR"
+        username = "Lena"
+
 
         assert status not in last_line, f"status {status} is in last_line"
+        assert level not in last_line, f"level {level} is in last_line"
+        assert username not in last_line, f"username {username} is in last_line"
 
     def test_status_failed_negative(self):
         username = "Dima"
         status = "failed"
+        level = "ERROR"
         log_event(username, status)
         last_line = logs_reeder()
 
         status = "success"
-
-        assert status not in last_line, f"status {status} is in last_line"
-
-    def test_username_negative(self):
-        username = "Dima"
-        status = "failed"
-        log_event(username, status)
-        last_line = logs_reeder()
+        level = "INFO"
         username = "Lena"
 
+        assert status not in last_line, f"status {status} is in last_line"
+        assert level not in last_line, f"level {level} is in last_line"
         assert username not in last_line, f"username {username} is in last_line"
+
+
+
