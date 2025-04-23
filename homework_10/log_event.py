@@ -1,5 +1,4 @@
 import logging
-from homework_10.my_logger import logger
 
 """
 Ваша команда та ви розробляєте систему входу для веб-додатка,
@@ -20,8 +19,16 @@ def log_event(username: str, status: str):
     * expired - пароль застаріває і його слід замінити, логується на рівні warning
     * failed  - пароль невірний, логується на рівні error
     """
+
     log_message = f"Login event - Username: {username}, Status: {status}"
 
+    # Створення та налаштування логера
+    logging.basicConfig(
+        filename='login_system.log',
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        force=True
+    )
     logger = logging.getLogger("log_event")
 
     # Логування події
