@@ -22,10 +22,5 @@ def validation_of_json(list_of_path):
             logger.error(f"{file_path.name} is invalid - fault: json.JSONDecodeError ")
 
 
-
-
-
-
-
-
-validation_of_json(list_of_path_real)
+if __name__ == "__main__":
+    validation_of_json(list_of_path_real)
