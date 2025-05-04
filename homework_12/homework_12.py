@@ -15,7 +15,3 @@ class Student:
         print(f"average_grade - {self.average_grade}")
 
 
-new_student = Student("Dmytro", "Nedilko", 37, 85)
-new_student.show_info()
-new_student.update_grade(50)
-new_student.show_info()
