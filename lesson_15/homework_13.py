@@ -4,7 +4,7 @@ class Rhombus:
         self.angle_a = angle_a
 
     def __setattr__(self, name, value):
-        if name == "side_a":
+        if name == "__side_a":
             if value <= 0:
                 raise ValueError("The side of the rhombus must be greater than 0.")
         elif name == "angle_a":
