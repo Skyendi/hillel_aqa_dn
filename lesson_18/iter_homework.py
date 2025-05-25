@@ -1,10 +1,13 @@
-n = 11
-even_numbers_gen = (i for i in range(n) if i % 2 == 0)
+def create_list_of_even_nums(n):
+    even_numbers_gen = (i for i in range(n) if i % 2 == 0)
+    list_of_even = []
+    for num in even_numbers_gen:
+        list_of_even.append(num)
 
-for num in even_numbers_gen:
-    print(num)
+    return list_of_even
 
-print("_" * 70)
+
+print(create_list_of_even_nums(11))
 
 
 # __________________________________________________________________________________
@@ -17,7 +20,12 @@ def fibonacci_generator():
         a, b = b, a + b
 
 
-fibonacci = fibonacci_generator()
+def fibonacci_func(n):
+    fibonacci = fibonacci_generator()
+    result = []
+    for i in range(n):
+        result.append(next(fibonacci))
+    return result
 
-for i in range(20):
-    print(next(fibonacci))
+
+print(fibonacci_func(20))
