@@ -5,8 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 api_key = os.getenv("API_KEY")
-
-url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos"
+url = os.getenv("base_url")
 params = {"sol": 1000, "camera": "fhaz", "api_key": api_key}
 
 response = requests.get(url, params=params)
