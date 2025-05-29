@@ -4,15 +4,17 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-api_key = os.getenv("API_KEY")
-url = os.getenv("base_url")
-params = {"sol": 1000, "camera": "fhaz", "api_key": api_key}
+def download_picture():
 
-response = requests.get(url, params=params)
+    api_key = os.getenv("API_KEY")
+    url = os.getenv("base_url")
+    params = {"sol": 1000, "camera": "fhaz", "api_key": api_key}
 
-photos = response.json().get("photos", [])
+    response = requests.get(url, params=params)
 
-for i, photo in enumerate(photos[:5]):
-    img_data = requests.get(photo["img_src"]).content
-    with open(f"curiosity_photos/mars_photo{i + 1}.jpg", "wb") as f:
-        f.write(img_data)
+    photos = response.json().get("photos", [])
+
+    for i, photo in enumerate(photos[:5]):
+        img_data = requests.get(photo["img_src"]).content
+        with open(f"curiosity_photos/mars_photo{i + 1}.jpg", "wb") as f:
+            f.write(img_data)
