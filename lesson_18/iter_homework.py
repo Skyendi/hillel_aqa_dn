@@ -6,13 +6,13 @@ def reverse_iterator(*args) -> iter:
     return args
 
 
-reverse_it: iter = reverse_iterator(my_list)
+reverse_iter: iter = reverse_iterator(my_list)
 
-print(next(reverse_it))
-print(next(reverse_it))
-print(next(reverse_it))
-print(next(reverse_it))
-print(next(reverse_it))
+print(next(reverse_iter))
+print(next(reverse_iter))
+print(next(reverse_iter))
+print(next(reverse_iter))
+print(next(reverse_iter))
 
 # _________________________________________________________________________________________
 print("_" * 70)
