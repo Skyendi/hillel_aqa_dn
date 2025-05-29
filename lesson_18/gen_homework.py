@@ -1,22 +1,31 @@
-my_list = [10, 20, 30, 40, 50]
+def create_list_of_even_nums(n: int) -> list[int]:
+    even_numbers_gen = (i for i in range(n) if i % 2 == 0)
+    list_of_even = []
+    for num in even_numbers_gen:
+        list_of_even.append(num)
 
-reverse_iterator = iter(my_list[::-1])
-
-print(next(reverse_iterator))
-print(next(reverse_iterator))
-print(next(reverse_iterator))
-print(next(reverse_iterator))
-print(next(reverse_iterator))
-
-# _________________________________________________________________________________________
-print("_" * 70)
+    return list_of_even
 
 
-def even_numbers(n):
+print(create_list_of_even_nums(11))
+
+
+# __________________________________________________________________________________
+
+
+def fibonacci_generator():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b
+
+
+def fibonacci_func(n) -> list[int]:
+    fibonacci = fibonacci_generator()
+    result = []
     for i in range(n):
-        if i % 2 == 0:
-            yield i
+        result.append(next(fibonacci))
+    return result
 
 
-for num in even_numbers(10):
-    print(num)
+print(fibonacci_func(20))
