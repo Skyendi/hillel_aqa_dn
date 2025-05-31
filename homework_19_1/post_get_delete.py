@@ -4,12 +4,15 @@ from dotenv import load_dotenv
 from homework_19_1.download_photos import download_picture
 load_dotenv()
 
-download_picture()
+
 
 class ApiClient:
     def __init__(self):
         self.base_url = os.getenv("MY_SERVER_URL")
         self._session = requests.Session()
+
+    def download_picture(self):
+        download_picture()
 
     def _post(self, endpoint, **kwargs):
         url = f"{self.base_url}{endpoint}"

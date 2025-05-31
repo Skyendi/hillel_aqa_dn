@@ -11,10 +11,17 @@ def download_picture():
     params = {"sol": 1000, "camera": "fhaz", "api_key": api_key}
 
     response = requests.get(url, params=params)
+    if response.status_code != 200:
+        print("Request ERROR", response.status_code)
 
     photos = response.json().get("photos", [])
 
     for i, photo in enumerate(photos[:5]):
-        img_data = requests.get(photo["img_src"]).content
-        with open(f"curiosity_photos/mars_photo{i + 1}.jpg", "wb") as f:
-            f.write(img_data)
+        if "img_src" in photo:
+            img_data = requests.get(photo["img_src"]).content
+            with open(f"curiosity_photos/mars_photo{i + 1}.jpg", "wb") as f:
+                f.write(img_data)
+        else:
+            print(f"The key 'img_src' is not in 'photos'")
+if __name__ == "__main__":
+    download_picture()
