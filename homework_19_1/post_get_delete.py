@@ -39,14 +39,14 @@ class PictureClient(ApiClient):
     def delete_picture(self, filename, **kwargs):
         return self._delete(f"/delete/{filename}", **kwargs)
 
+if __name__ == "__main__":
+    client = PictureClient()
+    resp_post = client.post_picture("curiosity_photos/mars_photo1.jpg")
+    print(resp_post.status_code, resp_post.text)
 
-client = PictureClient()
-resp_post = client.post_picture("curiosity_photos/mars_photo1.jpg")
-print(resp_post.status_code, resp_post.text)
+    headers = {"Content-Type": "text"}
+    resp_get = client.get_picture("mars_photo1.jpg", headers=headers)
+    print(resp_get.status_code, resp_get.text)
 
-headers = {"Content-Type": "text"}
-resp_get = client.get_picture("mars_photo1.jpg", headers=headers)
-print(resp_get.status_code, resp_get.text)
-
-resp_del = client.delete_picture("mars_photo1.jpg")
-print(resp_del.status_code)
+    resp_del = client.delete_picture("mars_photo1.jpg")
+    print(resp_del.status_code)

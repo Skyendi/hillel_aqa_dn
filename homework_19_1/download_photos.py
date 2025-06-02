@@ -1,8 +1,9 @@
 import requests
 import os
 from dotenv import load_dotenv
+from stream_logger import logger
 
-load_dotenv()
+
 
 def download_picture():
 
@@ -12,7 +13,7 @@ def download_picture():
 
     response = requests.get(url, params=params)
     if response.status_code != 200:
-        print("Request ERROR", response.status_code)
+        logger.error(f"Request ERROR, {response.status_code}")
 
     photos = response.json().get("photos", [])
 
@@ -22,6 +23,7 @@ def download_picture():
             with open(f"curiosity_photos/mars_photo{i + 1}.jpg", "wb") as f:
                 f.write(img_data)
         else:
-            print(f"The key 'img_src' is not in 'photos'")
+            logger.error(f"The key 'img_src' is not in 'photos'")
 if __name__ == "__main__":
+    load_dotenv()
     download_picture()
