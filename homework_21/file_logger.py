@@ -7,7 +7,7 @@ logger = logging.getLogger("log_event")
 logger.setLevel(logging.INFO)
 
 # Створення обробника для запису в файл
-file_handler = logging.FileHandler('login_system.log')
+file_handler = logging.FileHandler('hb_test.log')
 
 # Налаштування рівня логування для обробника
 file_handler.setLevel(logging.INFO)
