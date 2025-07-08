@@ -1,9 +1,9 @@
 from homework_25_xpath_css_sel.xpath import instructions_button
 
 brand_dropdown = "button#brandSelectDropdown"
-model_dropdown "button#modelSelectDropdown"
-instructions_search_button = ".instructions-search-controls_search,btn"
-home_header_button = "a.btn,header-link"
+model_dropdown = "button#modelSelectDropdown"
+instructions_search_button = ".instructions-search-controls_search.btn"
+home_header_button = "a.btn.header-link"
 about_header_button = "button[appscrollto=aboutSection]"
 contacts_header_button = "button[appscrollto=contactsSection]"
 button_guest_login = "div.header_right.d-flex.align-items-center > button:nth-child(1)"
@@ -15,7 +15,7 @@ telegram_icon = "span.icon-telegram"
 youtube_icon = "span.icon-youtube"
 instagram_icon = "span.icon-instagram"
 linkedin_icon = "span.icon-linkedin"
-link_ithillel = a[href='https://ithillel.ua']
+link_ithillel = "a[href='https://ithillel.ua']"
 link_support_email = "a.h4"
 side_bar_button_garage = "a[routerlink=garage]"
 button_add_car = "div.panel-page_heading.d-flex.justify-content-between > button"
