@@ -17,4 +17,3 @@ def get_course():
     course = random_course()
     return course
 
-#print(get_course())
