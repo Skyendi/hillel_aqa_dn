@@ -1,5 +1,6 @@
 from random import choice, random
 import random
+import allure
 
 
 def random_course():
@@ -12,7 +13,7 @@ def random_course():
 
     return random.choice(courses)
 
-
+@allure.step("get_course")
 def get_course():
     course = random_course()
     return course
