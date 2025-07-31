@@ -1,3 +1,4 @@
+import allure
 import pytest
 from homework_22_alchemi.university import Courses, Students
 
@@ -5,11 +6,13 @@ from homework_22_alchemi.university import Courses, Students
 @pytest.mark.usefixtures("db_client")
 class TestStudentCRUD:
 
+    @allure.feature("test_add_students")
     def test_add_students(self, db_client):
         db_client.add_student()
         count = db_client.session.query(Students).count()
         assert count > 0
 
+    @allure.feature("test_get_students_by_course_id")
     def test_get_students_by_course_id(self, db_client):
         course = db_client.session.query(Courses).first()
         assert course is not None, "No course found"
@@ -17,6 +20,7 @@ class TestStudentCRUD:
         students = db_client.session.query(Students.name).filter_by(course_id=course.id).all()
         assert isinstance(students, list)
 
+    @allure.feature("test_update_student_name")
     def test_update_student_name(self, db_client):
         student = db_client.session.query(Students).first()
         assert student is not None, "No student found in range"
@@ -26,6 +30,7 @@ class TestStudentCRUD:
         updated = db_client.session.query(Students).filter_by(name="Dmytro Nedilko").first()
         assert updated is not None
 
+    @allure.feature("test_delete_student_by_name")
     def test_delete_student_by_name(self, db_client):
         student = db_client.session.query(Students).filter_by(name="Dmytro Nedilko").first()
         assert student is not None, "Student to delete not found"

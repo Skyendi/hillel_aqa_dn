@@ -1,10 +1,12 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
+import allure
 
 from homework_22_alchemi.data_provider.course import get_course
 from homework_22_alchemi.data_provider.student import get_student
 from homework_22_alchemi.university import Courses, Students
+
 
 load_dotenv()
 
@@ -28,10 +30,12 @@ class SQLAlchemyClient:
         session = sessionmaker(bind=self.__engine)
         return session()
 
+    @allure.step("Create table")
     def create_table(self, table_obj):
 
         table_obj.metadata.create_all(self.__engine)
 
+    @allure.step("add_course")
     def add_course(self):
         for _ in range(5):
             new_course_dict = get_course()
@@ -46,6 +50,7 @@ class SQLAlchemyClient:
 
         self.session.commit()
 
+    @allure.step("add_student")
     def add_student(self):
         course_ids = [course.id for course in self.session.query(Courses).all()]
         for _ in range(20):
@@ -54,6 +59,7 @@ class SQLAlchemyClient:
             self.session.add(student)
         self.session.commit()
 
+    @allure.step("close_connection")
     def close_connection(self):
 
         self.__session.close()
