@@ -1,4 +1,5 @@
 import pytest
+import allure
 
 from homework_22_alchemi.data_provider.course import get_course
 from homework_22_alchemi.university import Courses, Students
